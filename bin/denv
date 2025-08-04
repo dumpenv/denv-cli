@@ -1,0 +1,30 @@
+#!/bin/sh
+# This script acts as an entry point for the denv tool.
+# It sets up the environment and then executes the denv command.
+
+# Importing the scripts from the commands directory
+. "$(dirname "$0")/../commands/help"
+
+# Calling a denv command based on the first argument
+case "$1" in
+  ""| -h)
+    show_help
+    ;;
+  push)
+    exec commands/push "$@"
+    ;;
+  pull)
+    exec commands/pull "$@"
+    ;;
+  config)
+    exec commands/config "$@"
+    ;;
+  help)
+    exec commands/help "$@"
+    ;;
+  *)
+    echo "Unknown command: $1"
+    echo "Available commands: init, push, pull, config, help"
+    exit 1
+    ;;
+esac

@@ -1,0 +1,24 @@
+#!/bin/sh
+
+show_help() {
+  cat <<EOF
+
+Denv - A simple but secure secrets management tool.
+
+Usage: denv [command] [options]
+
+These are the common denv commands used in various situations:
+  init        Initialize the environment
+  push        Push changes to the environment
+  pull        Pull changes from the environment
+  config      Configure the environment
+  help        Show this help message
+  version     Show version information
+
+Options:
+  -h, --help      Show this help message
+  -v, --version   Show version info
+
+
+EOF
+}
