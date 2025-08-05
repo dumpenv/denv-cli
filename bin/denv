@@ -1,30 +1,41 @@
 #!/bin/sh
 # This script acts as an entry point for the denv tool.
 # It sets up the environment and then executes the denv command.
+# Importing the scripts from the denv directory
+# So $0 points to the current script's directory and $1,2, etc. are the command arguments.
 
-# Importing the scripts from the commands directory
-. "$(dirname "$0")/../commands/help"
-
+. "$(dirname "$0")/../denv/help"
+. "$(dirname "$0")/../denv/init"
+# . is the shorthand for source, which executes the script in the current shell context.
 # Calling a denv command based on the first argument
 case "$1" in
-  ""| -h)
+  ""| -h | help)
     show_help
     ;;
+	-v | version)
+		echo "denv version 1.0.0" 
+		;;
   push)
-    exec commands/push "$@"
+    exec denv/push "$@"
     ;;
   pull)
-    exec commands/pull "$@"
+    exec denv/pull "$@"
     ;;
   config)
-    exec commands/config "$@"
+    exec denv/config "$@"
     ;;
   help)
-    exec commands/help "$@"
+    exec denv/help "$@"
     ;;
+  status)
+    exec denv/status "$@"
+    ;;
+	init)
+		init
+		;;
   *)
     echo "Unknown command: $1"
-    echo "Available commands: init, push, pull, config, help"
+    echo "Use 'denv help' for a list of available commands."
     exit 1
     ;;
 esac

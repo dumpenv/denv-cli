@@ -1,0 +1,16 @@
+#!/bin/sh
+init() {
+    # Need to implement a few checks to help initialization.
+    if [ ! -d "$HOME/.denv" ]; then
+        echo
+        echo "+----------------------------------------+"
+        echo "|        🚀 Welcome To Denv!             |"
+        echo "|  Initializing Your Global Environment… |"
+        echo "+----------------------------------------+"
+        echo
+
+        mkdir -p "$HOME/.denv"
+    fi
+
+
+}

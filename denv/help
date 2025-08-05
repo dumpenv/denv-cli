@@ -3,7 +3,7 @@
 show_help() {
   cat <<EOF
 
-Denv - A simple but secure secrets management tool.
+Denv - An encrypted vault for your environment variables.
 
 Usage: denv [command] [options]
 
